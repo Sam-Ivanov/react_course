@@ -12,6 +12,7 @@ const Dialogs = (props) => {
       { id: 4, name: 'Dimich4' },
       { id: 5, name: 'Dimich5' }
    ];
+   
    let messages = [
       { id: 1, message: 'qwe1' },
       { id: 2, message: 'qwe2' },
