@@ -8,9 +8,12 @@ const MyPosts = (props) => {
    const postsElements = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />)
 
    function getPost() {
-      console.log(newPostElement.current.value);
+      // console.log(newPostElement.current.value);
+      props.addPost(newPostElement.current.value);
+      console.log(props.posts);
+      newPostElement.current.value = '';
    }
-   
+
    return (
       <div className={s.postsBlock}>
          <h3>My posts</h3>
