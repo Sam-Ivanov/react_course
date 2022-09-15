@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import state, { subscribe } from './redux/state'
-import { addPost, updateNewPostText } from './redux/state';
+import store from './redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root')); // ВОТ ЭТА СТРОКА
 let rerenderEntireTree = (state) =>{
@@ -12,11 +11,11 @@ let rerenderEntireTree = (state) =>{
     root.render(
         <React.StrictMode>
             <App state={state}
-                 addPost={addPost}
-                 updateNewPostText={updateNewPostText}/>
+                 dispatch={store.dispatch.bind(store)}
+                 store={store}/>
         </React.StrictMode>
     );}
 
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
