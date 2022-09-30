@@ -1,9 +1,12 @@
 .header {
-   grid-area: h;
-   background-color: rgb(87, 46, 134);
-   }
- 
- .header img{
-   width: 80px;
- }
- 
+  grid-area: h;
+  background-color: rgb(87, 46, 134);
+  display: flex;
+  
+  align-items: center;
+}
+
+.header img {
+  width: 110px;
+  margin-left: 30px;
+}
