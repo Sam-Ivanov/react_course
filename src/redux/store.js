@@ -51,10 +51,12 @@ let store = {
       this._state.profilePage = profileReducer(this._state.profilePage, action);
       this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
       this._state.sidebar = sidebarReducer(this._state.sidebar, action);
-      this._callSubscriber(this._state);
+      this._callSubscriber(this._state);           //по идее должно обновлять без параметров, т.к. _callSubscriber/observer внутри самма получает стэйт через store.getState()
 
    }
 };
 
 export default store;
 window.store = store;
+
+
