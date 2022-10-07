@@ -1,0 +1,9 @@
+.userPhoto {
+   width: 100px;
+   height: 100px;
+}
+
+.selectedPage{
+   /* color: rgb(109, 109, 109); */
+   font-weight: bold;
+}
