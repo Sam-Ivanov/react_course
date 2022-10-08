@@ -1,9 +1,10 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../redux/profile-reducer';
+import { getUserProfile } from '../../redux/profile-reducer';
 import Profile from './Profile';
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
 
@@ -13,33 +14,24 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = 26189;
       }
-      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-         .then(res => {
-            this.props.setUserProfile(res.data)
-         });
+      this.props.getUserProfile(userId);
    }
    componentDidUpdate(prevProps) {
       let userId = this.props.router.params.userId
       if (prevProps.router.params.userId !== userId) {
-        let userId = 26189
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-          .then(response => {
-            this.props.setUserProfile(response.data);
-          });
+         let userId = 26189
+         this.props.getUserProfile(userId);
       }
-    }
+   }
 
    render() {
+
       return (
          <Profile {...this.props} profile={this.props.profile} />
       )
    }
 }
 //============================================================
-let mapStateToProps = (state) => ({
-   profile: state.profilePage.profile
-})
-
 function withRouter(Component) {
    function ComponentWithRouterProp(props) {
       let location = useLocation();
@@ -55,8 +47,21 @@ function withRouter(Component) {
    return ComponentWithRouterProp;
 }
 
-export default connect(mapStateToProps, { setUserProfile })(withRouter(ProfileContainer)); // v6
+let mapStateToProps = (state) => ({
+   profile: state.profilePage.profile,
+})
+
+
+// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
+// export default connect(mapStateToProps, { getUserProfile })(withRouter(AuthRedirectComponent)); // v6
 
 // export default connect(mapStateToProps, {
 //    setUserProfile
 // })(ProfileContainer);
+
+export default compose(
+   connect(mapStateToProps, { getUserProfile }),
+   withRouter,
+   withAuthRedirect
+)(ProfileContainer)
