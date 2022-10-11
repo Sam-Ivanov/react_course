@@ -6,7 +6,6 @@ import { login } from "../../redux/auth-reducer";
 import { required } from "../../utils/validatiors/validators";
 import { Input } from "../common/FormsControls/FormsControls";
 
-
 const LoginForm = (props) => {
    return (
       <form onSubmit={props.handleSubmit}>
@@ -34,13 +33,14 @@ const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
 const Login = (props) => {
    const onSubmit = (formData) => {
+      console.log(formData);
       props.login(formData.email, formData.password, formData.rememberMe);
    }
 
    if (props.isAuth) {
       return <Navigate to={'/profile'} />
    }
-   
+
    return (
       <div>
          <h1>Login</h1>
@@ -49,7 +49,7 @@ const Login = (props) => {
    )
 }
 
-const mapStateToProps=(state)=>({
+const mapStateToProps = (state) => ({
    isAuth: state.auth.isAuth
 })
 
