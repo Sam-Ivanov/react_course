@@ -4,7 +4,7 @@ import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../hoc/withAuthRedirect';
+// import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { getUsers, getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount } from '../../redux/users-selectors';
 
 
