@@ -4,7 +4,6 @@ import s from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
-
    return (
       <div >
          {/* <div>
