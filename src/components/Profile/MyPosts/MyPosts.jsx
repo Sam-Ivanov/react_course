@@ -23,7 +23,7 @@ const AddNewPostForm = (props) => {
 
 let AddNewPostFormRedux = reduxForm({ form: 'ProfileAddNewPostForm' })(AddNewPostForm);
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
    const postsElements = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />)
 
    let onAddPost = (values) => {
@@ -39,7 +39,7 @@ const MyPosts = (props) => {
          </div>
       </div>
    )
-}
+});
 
 // class MyPosts extends PureComponent {
 
