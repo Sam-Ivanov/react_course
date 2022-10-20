@@ -1,4 +1,4 @@
-import profileReducer, { addPostActionCreator } from '../profile-reducer';
+import profileReducer, { addPostActionCreator } from './profile-reducer';
 
 it('length of posts should be incremented', () => {
    let action = addPostActionCreator('it-kamas');

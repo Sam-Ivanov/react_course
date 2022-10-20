@@ -11,7 +11,6 @@ import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
 import { connect } from 'react-redux';
-// import { getAuthUserData } from './redux/auth-reducer';
 import { compose } from 'redux';
 import withRouter from './withRouter';
 import { initializeApp } from './redux/app-reducer';
@@ -46,20 +45,13 @@ class App extends Component {
           </Routes>
         </div>
       </div>
-    )
-  };
+    );
+  }
 }
-
-
-// export default compose(
-//   connect(null, { getAuthUserData }),
-//   withRouter,
-//   )(App);
-
 
 const mapStateToProps = (state) => ({
   initialized: state.app.initialized
-})
+});
 
 export default compose(
   withRouter,
