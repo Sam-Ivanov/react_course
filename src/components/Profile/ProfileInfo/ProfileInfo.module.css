@@ -7,7 +7,12 @@
    padding: 10px;
 }
 
-.qwe{
+.profileDescription{
    color: rgb(213, 231, 107);
    font-weight: bold;
+}
+
+.mainPhoto{
+   max-width: 250px;
+   max-height: 250px;
 }

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './Paginator.module.css';
 import cn from 'classnames';
 
 const Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 20 }) => {
+
+   useEffect(()=>{setPortionNumber(Math.ceil(currentPage/portionSize))},[currentPage])
+
    let pagesCount = Math.ceil(totalItemsCount / pageSize);
    let pages = [];
    for (let i = 1; i <= pagesCount; i++) {

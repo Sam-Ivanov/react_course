@@ -7,9 +7,7 @@ import withRouter from "../../withRouter";
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
-
-   componentDidMount() {
-
+   refreshProfile() {
       let userId = this.props.router.params.userId;
       if (!userId) {
          userId = this.props.authorizedUserId;
@@ -19,16 +17,32 @@ class ProfileContainer extends React.Component {
       }
       this.props.getUserProfile(userId);
       this.props.getStatus(userId);
+
+   }
+   componentDidMount() {
+      this.refreshProfile();
+      // let userId = this.props.router.params.userId;
+      // if (!userId) {
+      //    userId = this.props.authorizedUserId;
+      //    // if(!userId){
+      //    //    this.props.router.navigate('/login')
+      //    // }
+      // }
+      // this.props.getUserProfile(userId);
+      // this.props.getStatus(userId);
    }
 
 
 
    componentDidUpdate(prevProps) {
-      let userId = this.props.router.params.userId
-      if (prevProps.router.params.userId !== userId) {
-         let userId = this.props.authorizedUserId
-         this.props.getUserProfile(userId);
+      if (this.props.router.params.userId != prevProps.router.params.userId) {
+         this.refreshProfile();
       }
+   //    let userId = this.props.router.params.userId
+   //    if (prevProps.router.params.userId !== userId) {
+   //       let userId = this.props.authorizedUserId
+   //       this.props.getUserProfile(userId);
+   //    }
    }
 
    render() {
