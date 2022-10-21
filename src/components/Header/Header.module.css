@@ -1,13 +1,13 @@
 .header {
   grid-area: h;
-  background-color: rgb(87, 46, 134);
+  background-color: rgb(0, 0, 0);
   /* display: flex; */
 
   /* align-items: center; */
 }
 
 .header img {
-  width: 110px;
+  width: 80px;
   margin-left: 30px;
 }
 

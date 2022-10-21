@@ -3,16 +3,26 @@
    height: 200px;
 }
 
-.descriptionBlock{
+.descriptionBlock {
    padding: 10px;
 }
 
-.profileDescription{
+.profileDescription {
    color: rgb(213, 231, 107);
    font-weight: bold;
 }
 
-.mainPhoto{
+.mainPhoto {
    max-width: 250px;
    max-height: 250px;
+}
+.status {
+   margin-bottom: 10px;
+}
+
+.statusInput {
+   background-color: rgb(4, 86, 153);
+   border: none;
+   outline: none !important;
+   color: white;
 }
